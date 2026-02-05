@@ -1,0 +1,242 @@
+/* ====== Base ====== */
+* { box-sizing: border-box; }
+
+:root{
+  /* Color acento (verde esmeralda) */
+  --accent: #16a34a;
+  --accent-soft: rgba(22,163,74,0.16);
+  --accent-line: rgba(22,163,74,0.40);
+
+  --border: rgba(17,24,39,0.08);
+  --text: #111827;
+  --muted: #374151;
+  --bg1: #f6f8ff;
+  --bg2: #eef2ff;
+}
+
+/* ====== Layout ====== */
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 40px 18px;
+}
+
+/* ====== Tarjeta principal ====== */
+.card{
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 45px rgba(17,24,39,0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Quitamos la franja vieja porque el header ya trae su franja */
+.card::before{
+  content: none;
+}
+
+/* ====== HEADER tipo Wiki ====== */
+.wiki-header{
+  margin: -32px -32px 24px;
+  background: #089d64a3;
+  text-align: center;
+  border-radius: 18px 18px 14px 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 25px rgba(17,24,39,0.08);
+}
+
+/* Franja superior: acento + ámbar suave */
+.wiki-header::before{
+  content: "";
+  display: block;
+  height: 8px;
+  background: linear-gradient(90deg, var(--accent), #ffffff);
+}
+
+.wiki-title{
+  margin: 18px 0 6px;
+  font-size: 40px;
+  letter-spacing: -0.6px;
+  color: #ffffff;
+}
+
+.wiki-subtitle{
+  margin: 0 0 18px;
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+}
+
+/* ====== Barra de navegación ====== */
+.wiki-nav{
+  background: #089d64a3;
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  padding: 12px 10px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.wiki-nav a{
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.wiki-nav a:hover{
+  background: rgba(255,255,255,0.10);
+}
+
+/* Activo sin borde verde raro */
+.wiki-nav a.active{
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  outline: none;
+  position: relative;
+}
+
+/* Indicador inferior del activo */
+.wiki-nav a.active::after{
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 6px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.55);
+}
+
+/* ====== Títulos y texto ====== */
+h2{
+  margin: 22px 0 10px;
+  font-size: 18px;
+  color: #1f2937;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Línea sutil bajo cada sección (acento) */
+h2::after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 46px;
+  background: var(--accent-line);
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+p{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15.5px;
+}
+
+/* ====== Lista de integrantes ====== */
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+li{
+  background: #f8fafc;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 18px rgba(17,24,39,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+li:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(17,24,39,0.10);
+}
+
+/* Avatar */
+li::before{
+  content: "👤";
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(22,163,74,0.35);
+}
+
+/* ====== Tabla ====== */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(17,24,39,0.10);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(17,24,39,0.08);
+}
+
+thead th{
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(22,163,74,0.10);
+  border-bottom: 1px solid rgba(17,24,39,0.10);
+}
+
+tbody td{
+  padding: 12px 14px;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+}
+
+tbody tr:last-child td{ border-bottom: 0; }
+
+tbody tr:hover td{
+  background: rgba(22,163,74,0.06);
+}
+
+th + th,
+td + td{
+  border-left: 1px solid rgba(17,24,39,0.08);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 640px){
+  body{ padding: 18px 12px; }
+  .card{ padding: 22px; }
+  .wiki-header{ margin: -22px -22px 18px; }
+  .wiki-title{ font-size: 30px; }
+  .wiki-nav{ gap: 10px; flex-wrap: wrap; }
+  ul{ grid-template-columns: 1fr; }
+
+  table{
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
